@@ -7,7 +7,16 @@ import { RouterOutlet } from "@angular/router";
   selector: "app-root",
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
-  templateUrl: "./app.component.html",
-  styleUrl: "./app.component.scss",
+  template: `
+    <app-header></app-header>
+
+    <main class="bg-gray-100">
+      <div class="container mx-auto">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+
+    <app-footer> </app-footer>
+  `,
 })
 export class AppComponent {}
