@@ -6,22 +6,24 @@ import { RouterModule } from "@angular/router";
 	standalone: true,
 	imports: [RouterModule],
 	template: `
-		<footer class="bg-black py-6 space-y-10">
-			<section class="container mt-8 flex justify-between mx-auto text-white">
-				<div>LOGO</div>
+		<footer class="space-y-10 bg-black py-6">
+			<section
+				class="container mx-auto mt-8 flex flex-col items-center justify-between gap-10 px-8 text-white sm:flex-row sm:gap-0"
+			>
+				<div class="flex-1">LOGO</div>
 
 				<nav
-					class="flex-1 gap-12 flex justify-center items-center font-extralight"
+					class="flex-2 flex flex-col justify-center gap-4 text-center font-extralight md:flex-row md:gap-12"
 				>
 					@for (link of links; track link.label) {
 						<a [routerLink]="link.href">{{ link.label }}</a>
 					}
 				</nav>
 
-				<div>SOCIAL LINKS</div>
+				<div class="flex-1 text-right">SOCIAL LINKS</div>
 			</section>
 
-			<p class="text-gray-200 text-center text-xs">
+			<p class="text-center text-xs text-gray-200">
 				Copyright &#169; SmellyCat {{ currentYear }}
 			</p>
 		</footer>
