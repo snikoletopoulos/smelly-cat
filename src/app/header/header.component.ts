@@ -6,11 +6,11 @@ import { RouterModule } from "@angular/router";
 	standalone: true,
 	imports: [RouterModule],
 	template: `
-		<header class="border-b py-2 border-b-gray-400">
-			<section class="container flex justify-between mx-auto">
+		<header class="border-b border-b-gray-400 py-2">
+			<section class="container mx-auto flex justify-between">
 				<a routerLink="/">SMELLY CAT</a>
 
-				<nav class="flex justify-between gap-12 text-bold">
+				<nav class="text-bold flex justify-between sm:gap-12">
 					@for (link of links; track link.label) {
 						<a [routerLink]="link.href">{{ link.label }}</a>
 					}
