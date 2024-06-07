@@ -7,7 +7,7 @@ import { RouterModule } from "@angular/router";
 	imports: [RouterModule],
 	template: `
 		<header class="border-b border-b-gray-400 py-2">
-			<section class="container mx-auto flex justify-between">
+			<section class="container mx-auto flex justify-between px-8">
 				<a routerLink="/">SMELLY CAT</a>
 
 				<nav class="text-bold flex justify-between sm:gap-12">

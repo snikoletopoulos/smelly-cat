@@ -10,9 +10,9 @@ import { RouterOutlet } from "@angular/router";
 	template: `
 		<app-header></app-header>
 
-		<main class="bg-gray-100">
-			<div class="container mx-auto">
-				<router-outlet></router-outlet>
+		<main class="bg-paper">
+			<div class="container mx-auto px-8">
+				<router-outlet />
 			</div>
 		</main>
 
