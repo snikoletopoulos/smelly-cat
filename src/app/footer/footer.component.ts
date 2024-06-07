@@ -10,10 +10,10 @@ import { RouterModule } from "@angular/router";
 			<section
 				class="container mx-auto mt-8 flex flex-col items-center justify-between gap-10 px-8 text-white sm:flex-row sm:gap-0"
 			>
-				<div class="flex-1">LOGO</div>
+				<p class="flex-1">SMELLY CAT</p>
 
 				<nav
-					class="flex-2 flex flex-col justify-center gap-4 text-center font-extralight md:flex-row md:gap-12"
+					class="flex-2 flex flex-col justify-center gap-4 text-center font-extralight lg:flex-row lg:gap-12"
 				>
 					@for (link of links; track link.label) {
 						<a [routerLink]="link.href">{{ link.label }}</a>
@@ -23,7 +23,7 @@ import { RouterModule } from "@angular/router";
 				<div class="flex-1 text-right">SOCIAL LINKS</div>
 			</section>
 
-			<p class="text-center text-xs text-gray-200">
+			<p class="text-center text-xs text-muted">
 				Copyright &#169; SmellyCat {{ currentYear }}
 			</p>
 		</footer>
