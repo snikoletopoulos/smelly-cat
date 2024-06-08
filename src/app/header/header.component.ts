@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
+// TODO: fix sm responsiveness
 @Component({
 	selector: "app-header",
 	standalone: true,
@@ -10,7 +11,7 @@ import { RouterModule } from "@angular/router";
 			<section class="container mx-auto flex justify-between px-8">
 				<a routerLink="/">SMELLY CAT</a>
 
-				<nav class="text-bold flex justify-between sm:gap-12">
+				<nav class="text-bold flex justify-between md:gap-6 lg:gap-12">
 					@for (link of links; track link.label) {
 						<a [routerLink]="link.href">{{ link.label }}</a>
 					}
