@@ -16,7 +16,9 @@ import { RouterModule } from "@angular/router";
 					class="flex-2 flex flex-col justify-center gap-4 text-center font-extralight lg:flex-row lg:gap-12"
 				>
 					@for (link of links; track link.label) {
-						<a [routerLink]="link.href">{{ link.label }}</a>
+						<a [routerLink]="link.href" class="hover:text-primary">{{
+							link.label
+						}}</a>
 					}
 				</nav>
 
