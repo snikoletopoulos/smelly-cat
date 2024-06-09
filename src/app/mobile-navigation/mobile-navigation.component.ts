@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { RouterModule } from "@angular/router";
+import { Router } from "@angular/router";
 
 import type { NavLink } from "../nav-link";
 import { cn } from "@/lib/ui";
@@ -7,7 +7,7 @@ import { cn } from "@/lib/ui";
 @Component({
 	selector: "app-mobile-navigation",
 	standalone: true,
-	imports: [RouterModule],
+	imports: [],
 	template: `
 		<div class="md:hidden">
 			<button (click)="toggleNav()" class="relative flex flex-col gap-2">
@@ -34,12 +34,12 @@ import { cn } from "@/lib/ui";
 				<ul class="w-full list-none text-center">
 					@for (link of links; track link.href) {
 						<li class="m-4">
-							<a
-								[routerLink]="link.href"
+							<button
+								(click)="navigate(link.href)"
 								class="relative inline-block px-8 py-4 text-2xl font-light uppercase text-black transition-all duration-300"
 							>
 								{{ link.label }}
-							</a>
+							</button>
 						</li>
 					}
 				</ul>
@@ -50,7 +50,9 @@ import { cn } from "@/lib/ui";
 export class MobileNavigationComponent {
 	@Input({ required: true }) links: NavLink[] = [];
 
-	isOpen = true;
+	isOpen = false;
+
+	constructor(private router: Router) {}
 
 	toggleNav() {
 		this.isOpen = !this.isOpen;
@@ -72,5 +74,10 @@ export class MobileNavigationComponent {
 				"opacity-100 w-full": this.isOpen,
 			}
 		);
+	}
+
+	navigate(href: string) {
+		this.router.navigate([href]);
+		this.isOpen = false;
 	}
 }
