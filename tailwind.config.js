@@ -8,6 +8,7 @@ module.exports = {
 			},
 			colors: {
 				primary: "#EF7878",
+				secondary: "#9784FF",
 				paper: "#EFF1F4",
 				copyright: "#E1E4EA",
 				separator: "#D8D8D8",
