@@ -12,7 +12,9 @@ import type { NavLink } from "../nav-link";
 			<section
 				class="container mx-auto mt-8 flex flex-col items-center justify-between gap-10 px-8 text-white sm:flex-row sm:gap-0"
 			>
-				<p class="flex-1">SMELLY CAT</p>
+				<p class="flex-1">
+					<img src="img/logo-light.png" alt="Smelly Cat logo" />
+				</p>
 
 				<nav
 					class="flex-2 flex flex-col justify-center gap-4 text-center font-extralight lg:flex-row lg:gap-12"
@@ -24,7 +26,21 @@ import type { NavLink } from "../nav-link";
 					}
 				</nav>
 
-				<div class="flex-1 text-right">SOCIAL LINKS</div>
+				<div class="flex flex-1 justify-end gap-2">
+					<img src="img/discord-icon.png" alt="Discord icon" />
+					<img
+						src="img/twitter-icon.png"
+						width="88"
+						height="88"
+						alt="Discord icon"
+					/>
+					<img
+						src="img/instagram-icon.png"
+						width="88"
+						height="88"
+						alt="Discord icon"
+					/>
+				</div>
 			</section>
 
 			<p class="text-center text-xs text-copyright">
