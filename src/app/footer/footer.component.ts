@@ -18,7 +18,7 @@ import type { NavLink } from "../nav-link";
 					class="flex-2 flex flex-col justify-center gap-4 text-center font-extralight lg:flex-row lg:gap-12"
 				>
 					@for (link of links; track link.label) {
-						<a [routerLink]="link.href" class="hover:text-primary">{{
+						<a [routerLink]="link.href" class="text-sm hover:text-primary">{{
 							link.label
 						}}</a>
 					}
@@ -27,7 +27,7 @@ import type { NavLink } from "../nav-link";
 				<div class="flex-1 text-right">SOCIAL LINKS</div>
 			</section>
 
-			<p class="text-center text-xs text-muted">
+			<p class="text-center text-xs text-copyright">
 				Copyright &#169; SmellyCat {{ currentYear }}
 			</p>
 		</footer>
