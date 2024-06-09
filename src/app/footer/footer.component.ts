@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
+import type { NavLink } from "../nav-link";
+
 @Component({
 	selector: "app-footer",
 	standalone: true,
@@ -33,7 +35,7 @@ import { RouterModule } from "@angular/router";
 })
 export class FooterComponent {
 	currentYear = new Date().getFullYear();
-	links: { href: string; label: string }[] = [
+	links: NavLink[] = [
 		{
 			href: "/privacy-policy",
 			label: "Privacy Policy",

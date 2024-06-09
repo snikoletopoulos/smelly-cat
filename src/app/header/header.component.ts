@@ -1,29 +1,39 @@
 import { Component } from "@angular/core";
 import { RouterModule } from "@angular/router";
+import { MobileNavigationComponent } from "../mobile-navigation/mobile-navigation.component";
+import type { NavLink } from "../nav-link";
 
 // TODO: fix sm responsiveness
 @Component({
 	selector: "app-header",
 	standalone: true,
-	imports: [RouterModule],
+	imports: [RouterModule, MobileNavigationComponent],
 	template: `
 		<header class="border-b border-b-gray-400 py-2">
-			<section class="container mx-auto flex justify-between px-8">
-				<a routerLink="/">SMELLY CAT</a>
+			<section class="container mx-auto flex items-center justify-between px-8">
+				<a routerLink="/"
+					><img src="img/logo-dark.png" alt="Smelly Cat logo"
+				/></a>
 
-				<nav class="text-bold flex justify-between md:gap-6 lg:gap-12">
-					@for (link of links; track link.label) {
-						<a [routerLink]="link.href" class="hover:text-primary">{{
-							link.label
-						}}</a>
-					}
-				</nav>
+				<div>
+					<nav class="md:flex hidden justify-between md:gap-6 lg:gap-12">
+						@for (link of links; track link.label) {
+							<a
+								[routerLink]="link.href"
+								class="text-bold text-sm hover:text-primary"
+								>{{ link.label }}</a
+							>
+						}
+					</nav>
+
+					<app-mobile-navigation [links]="links"></app-mobile-navigation>
+				</div>
 			</section>
 		</header>
 	`,
 })
 export class HeaderComponent {
-	links: { href: string; label: string }[] = [
+	links: NavLink[] = [
 		{
 			href: "/adopt-kittens",
 			label: "Adopt Kittens",
