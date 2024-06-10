@@ -27,19 +27,27 @@ import type { NavLink } from "../nav-link";
 				</nav>
 
 				<div class="flex flex-1 justify-end gap-2">
-					<img src="img/discord-icon.png" alt="Discord icon" />
-					<img
-						src="img/twitter-icon.png"
-						width="88"
-						height="88"
-						alt="Discord icon"
-					/>
-					<img
-						src="img/instagram-icon.png"
-						width="88"
-						height="88"
-						alt="Discord icon"
-					/>
+					<a
+						href="https://discord.com"
+						target="_blank"
+						class="rounded-full hover:bg-primary"
+					>
+						<img src="img/discord-icon.png" alt="Discord icon" />
+					</a>
+					<a
+						href="https://x.com"
+						target="_blank"
+						class="rounded-full hover:bg-primary"
+					>
+						<img src="img/twitter-icon.png" alt="Twitter icon" />
+					</a>
+					<a
+						href="https://www.instagram.com"
+						target="_blank"
+						class="rounded-full hover:bg-primary"
+					>
+						<img src="img/instagram-icon.png" alt="Instagram icon" />
+					</a>
 				</div>
 			</section>
 
