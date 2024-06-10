@@ -12,7 +12,7 @@ import { cn } from "@/lib/ui";
 			<div [className]="containerClass">
 				<label [className]="labelClass" [for]="name">{{ label }}</label>
 				<input
-					class="grow-[2] rounded-md border border-gray-300 px-4 py-2"
+					class="w-full grow-[2] rounded-md border border-gray-300 px-4 py-2"
 					[type]="type"
 					[id]="name"
 					[name]="name"
@@ -36,7 +36,8 @@ export class InputComponent {
 		return cn(
 			"flex",
 			{
-				"items-center justify-between gap-3": this.orientation === "horizontal",
+				"flex-col gap-2 lg:flex-row lg:items-center lg:justify-between lg:gap-3":
+					this.orientation === "horizontal",
 				"flex-col gap-2": this.orientation === "vertical",
 			},
 			this.className

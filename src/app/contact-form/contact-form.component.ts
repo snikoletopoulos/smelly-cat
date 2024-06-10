@@ -29,7 +29,7 @@ import { TextareaComponent } from "../textarea/textarea.component";
 						label="Your Full Name"
 						name="name"
 						placeholder="Type your name"
-						labelClassName="basis-[100px]"
+						labelClassName="lg:basis-[100px]"
 						[form]="contactForm"
 					/>
 				</div>
@@ -39,7 +39,7 @@ import { TextareaComponent } from "../textarea/textarea.component";
 						label="Your Email"
 						name="email"
 						placeholder="Type your email"
-						labelClassName="basis-[100px]"
+						labelClassName="lg:basis-[100px]"
 						[form]="contactForm"
 					/>
 				</div>
@@ -48,14 +48,14 @@ import { TextareaComponent } from "../textarea/textarea.component";
 			<div class="h-0.5 bg-separator"></div>
 
 			<div class="mt-10 space-y-8">
-				<!-- TODO -->
-				<div class="flexa gap-[132px]">
+				<div
+					class="flex justify-between gap-9 md:flex-col lg:flex-row lg:items-end lg:gap-[132px]"
+				>
 					<app-input
 						label="City"
 						name="city"
 						placeholder="ex. Thessaloniki"
 						orientation="vertical"
-						className="min-w-0"
 						[form]="contactForm"
 					/>
 
@@ -64,7 +64,6 @@ import { TextareaComponent } from "../textarea/textarea.component";
 						name="postalCode"
 						placeholder="ex. 54658"
 						orientation="vertical"
-						className="min-w-0"
 						[form]="contactForm"
 					/>
 				</div>
@@ -75,7 +74,7 @@ import { TextareaComponent } from "../textarea/textarea.component";
 						label="Address"
 						name="address"
 						orientation="vertical"
-						className="w-2/3"
+						className="lg:w-2/3"
 						[form]="contactForm"
 					/>
 				</div>
