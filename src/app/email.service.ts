@@ -42,6 +42,7 @@ export class EmailService {
 	}
 
 	async send(data: z.infer<typeof this.EmailSchema>) {
+		console.log("url", this.url);
 		const result = await fetch(this.url, {
 			method: "POST",
 			body: JSON.stringify({
