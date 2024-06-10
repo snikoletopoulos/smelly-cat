@@ -43,6 +43,7 @@ import { cn } from "@/lib/ui";
 						name="email"
 						placeholder="Type your email"
 						labelClassName="lg:basis-[100px]"
+						type="email"
 						[form]="contactForm"
 						[error]="email.validationErrors['email']"
 					/>

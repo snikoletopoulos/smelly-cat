@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
+import { environment } from "@/enviroments/enviroment";
 import { z } from "zod";
 
 @Injectable({
 	providedIn: "root",
 })
 export class EmailService {
-	private url = "";
+	private url = environment.apiUrl;
 	private EmailSchema = z.object({
 		name: z.string({ required_error: "Required" }).min(1, "Required"),
 		email: z.string({ required_error: "Required" }).email("Email is invalid"),
@@ -41,6 +42,18 @@ export class EmailService {
 	}
 
 	async send(data: z.infer<typeof this.EmailSchema>) {
-		console.log("sending email", data);
+		const result = await fetch(this.url, {
+			method: "POST",
+			body: JSON.stringify({
+				name: data.name,
+				email: data.email,
+				city: data.city,
+				postalCode: data.postalCode,
+				address: data.address,
+				message: data.message,
+			}),
+		});
+
+		if (!result.ok) throw new Error("Failed to send email");
 	}
 }
