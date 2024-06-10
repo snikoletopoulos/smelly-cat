@@ -16,7 +16,7 @@ fs.writeFile(targetPath, envFile, err => {
 	} else {
 		console.log(
 			successColor,
-			`${checkSign} Successfully generated environment.development.ts`
+			`${checkSign} Successfully generated environment.ts`
 		);
 	}
 });
