@@ -1,10 +1,12 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 
 import { ButtonComponent } from "../button/button.component";
 import { InputComponent } from "../input/input.component";
 import { CheckboxComponent } from "../checkbox/checkbox.component";
 import { TextareaComponent } from "../textarea/textarea.component";
+import { EmailService } from "../email.service";
+import { cn } from "@/lib/ui";
 
 @Component({
 	selector: "app-contact-form",
@@ -31,6 +33,7 @@ import { TextareaComponent } from "../textarea/textarea.component";
 						placeholder="Type your name"
 						labelClassName="lg:basis-[100px]"
 						[form]="contactForm"
+						[error]="email.validationErrors['name']"
 					/>
 				</div>
 
@@ -41,6 +44,7 @@ import { TextareaComponent } from "../textarea/textarea.component";
 						placeholder="Type your email"
 						labelClassName="lg:basis-[100px]"
 						[form]="contactForm"
+						[error]="email.validationErrors['email']"
 					/>
 				</div>
 			</div>
@@ -57,6 +61,7 @@ import { TextareaComponent } from "../textarea/textarea.component";
 						placeholder="ex. Thessaloniki"
 						orientation="vertical"
 						[form]="contactForm"
+						[error]="email.validationErrors['city']"
 					/>
 
 					<app-input
@@ -65,6 +70,7 @@ import { TextareaComponent } from "../textarea/textarea.component";
 						placeholder="ex. 54658"
 						orientation="vertical"
 						[form]="contactForm"
+						[error]="email.validationErrors['postalCode']"
 					/>
 				</div>
 
@@ -76,6 +82,7 @@ import { TextareaComponent } from "../textarea/textarea.component";
 						orientation="vertical"
 						className="lg:w-2/3"
 						[form]="contactForm"
+						[error]="email.validationErrors['address']"
 					/>
 				</div>
 			</div>
@@ -86,6 +93,7 @@ import { TextareaComponent } from "../textarea/textarea.component";
 				name="message"
 				className="mt-9"
 				[form]="contactForm"
+				[error]="email.validationErrors['message']"
 			/>
 
 			<app-checkbox
@@ -93,11 +101,21 @@ import { TextareaComponent } from "../textarea/textarea.component";
 				label="I agree with the Terms & Conditions"
 				className="mt-[1.625em]"
 				[form]="contactForm"
+				[error]="email.validationErrors['termsAndConditions']"
 			/>
 
-			<app-button type="submit" className="w-full mt-[2.875rem] md:w-auto"
+			<app-button
+				[disabled]="loading"
+				type="submit"
+				className="w-full mt-[2.875rem] md:w-auto"
 				>Send!</app-button
 			>
+
+			@if (submitResultMessage) {
+				<p [className]="resultMessageClass">
+					{{ submitResultMessage.message }}
+				</p>
+			}
 		</form>`,
 })
 export class ContactFormComponent {
@@ -111,7 +129,38 @@ export class ContactFormComponent {
 		termsAndConditions: new FormControl(false),
 	});
 
-	handleSubmit() {
-		console.log(this.contactForm.value);
+	email = inject(EmailService);
+
+	submitResultMessage: { success: boolean; message: string } | null = null;
+	loading = false;
+
+	get resultMessageClass() {
+		return cn("mt-6 text-lg font-semibold", {
+			"text-green-500": this.submitResultMessage?.success,
+			"text-red-500": this.submitResultMessage?.success === false,
+		});
+	}
+
+	async handleSubmit() {
+		this.loading = true;
+
+		if (!this.email.validateData(this.contactForm.value)) {
+			this.loading = false;
+			return;
+		}
+
+		try {
+			await this.email.send(this.contactForm.value);
+
+			this.submitResultMessage = { success: true, message: "Email sent!" };
+			this.contactForm.reset();
+		} catch (error) {
+			console.error(error);
+			this.submitResultMessage = {
+				success: false,
+				message: "An error occurred",
+			};
+		}
+		this.loading = false;
 	}
 }
