@@ -80,7 +80,7 @@ import { cn } from "@/lib/ui";
 						label="Address"
 						name="address"
 						orientation="vertical"
-						className="lg:w-2/3"
+						className="lg:w-3/5"
 						[form]="contactForm"
 						[error]="email.validationErrors['address']"
 					/>
