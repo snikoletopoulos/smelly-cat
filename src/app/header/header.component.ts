@@ -16,7 +16,7 @@ import type { NavLink } from "../nav-link";
 				/></a>
 
 				<div>
-					<nav class="md:flex hidden justify-between md:gap-6 lg:gap-12">
+					<nav class="hidden justify-between md:flex md:gap-6 lg:gap-12">
 						@for (link of links; track link.label) {
 							<a
 								[routerLink]="link.href"
@@ -51,7 +51,7 @@ export class HeaderComponent {
 			label: "Blog",
 		},
 		{
-			href: "/contact",
+			href: "/",
 			label: "Contact",
 		},
 	];
