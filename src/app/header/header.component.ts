@@ -3,7 +3,6 @@ import { RouterModule } from "@angular/router";
 import { MobileNavigationComponent } from "../mobile-navigation/mobile-navigation.component";
 import type { NavLink } from "../nav-link";
 
-// TODO: fix sm responsiveness
 @Component({
 	selector: "app-header",
 	standalone: true,
