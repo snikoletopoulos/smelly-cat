@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { environment } from "@/enviroments/enviroment";
+import { environment } from "@/environments/environment";
 import { z } from "zod";
 
 @Injectable({
 	providedIn: "root",
 })
 export class EmailService {
-	private url = environment.apiUrl;
+	private url = environment.API_URL;
 	private EmailSchema = z.object({
 		name: z.string({ required_error: "Required" }).min(1, "Required"),
 		email: z.string({ required_error: "Required" }).email("Email is invalid"),
