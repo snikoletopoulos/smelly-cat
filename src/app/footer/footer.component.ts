@@ -2,11 +2,19 @@ import { Component } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
 import type { NavLink } from "../nav-link";
+import { TwitterIconComponent } from "../twitter-icon/twitter-icon.component";
+import { InstagramIconComponent } from "../instagram-icon/instagram-icon.component";
+import { DiscordIconComponent } from "../discord-icon/discord-icon.component";
 
 @Component({
 	selector: "app-footer",
 	standalone: true,
-	imports: [RouterModule],
+	imports: [
+		RouterModule,
+		TwitterIconComponent,
+		InstagramIconComponent,
+		DiscordIconComponent,
+	],
 	template: `
 		<footer class="space-y-10 bg-black py-6">
 			<section
@@ -26,27 +34,29 @@ import type { NavLink } from "../nav-link";
 					}
 				</nav>
 
-				<div class="flex flex-1 justify-end gap-2">
+				<div
+					class="md:bg-red-200a flex flex-1 justify-end gap-7 sm:gap-4 md:gap-7"
+				>
 					<a
 						href="https://discord.com"
 						target="_blank"
-						class="rounded-full hover:bg-primary"
+						class="rounded-full p-3 hover:bg-primary"
 					>
-						<img src="img/discord-icon.png" alt="Discord icon" />
+						<app-discord-icon />
 					</a>
 					<a
 						href="https://x.com"
 						target="_blank"
-						class="rounded-full hover:bg-primary"
+						class="rounded-full p-3 hover:bg-primary"
 					>
-						<img src="img/twitter-icon.png" alt="Twitter icon" />
+						<app-twitter-icon />
 					</a>
 					<a
 						href="https://www.instagram.com"
 						target="_blank"
-						class="rounded-full hover:bg-primary"
+						class="rounded-full p-3 hover:bg-primary"
 					>
-						<img src="img/instagram-icon.png" alt="Instagram icon" />
+						<app-instagram-icon />
 					</a>
 				</div>
 			</section>
