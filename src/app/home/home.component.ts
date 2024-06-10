@@ -8,7 +8,7 @@ import { LocationComponent } from "../location/location.component";
 	imports: [ContactFormComponent, LocationComponent],
 	template: `
 		<section
-			class="flex flex-col justify-between gap-14 pb-20 pt-10 md:flex-row md:pb-[11.687em] md:pt-20"
+			class="flex flex-col justify-between gap-14 pb-20 pt-10 md:flex-row md:pb-24 md:pt-14 lg:pb-[11.687em] lg:pt-20"
 		>
 			<div class="flex-1">
 				<app-contact-form />
