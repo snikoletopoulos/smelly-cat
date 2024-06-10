@@ -11,15 +11,22 @@ import { cn } from "@/lib/ui";
 		<ng-container [formGroup]="form">
 			<div [className]="containerClass">
 				<label [className]="labelClass" [for]="name">{{ label }}</label>
-				<input
-					class="w-full grow-[2] rounded-md border border-gray-300 px-4 py-2"
-					[type]="type"
-					[id]="name"
-					[name]="name"
-					[placeholder]="placeholder"
-					[formControlName]="name"
-				/></div
-		></ng-container>
+				<div class="grow-[2]">
+					<input
+						class="w-full rounded-md border border-gray-300 px-4 py-2"
+						[type]="type"
+						[id]="name"
+						[name]="name"
+						[placeholder]="placeholder"
+						[formControlName]="name"
+					/>
+
+					@if (error) {
+						<p class="absolute text-sm text-red-500">{{ error }}</p>
+					}
+				</div>
+			</div>
+		</ng-container>
 	`,
 })
 export class InputComponent {
@@ -31,6 +38,7 @@ export class InputComponent {
 	@Input() className = "";
 	@Input() labelClassName = "";
 	@Input() form!: FormGroup;
+	@Input() error?: string;
 
 	get containerClass() {
 		return cn(

@@ -15,15 +15,22 @@ import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 					<span class="float-right text-sm text-secondary">Optional</span>
 				</div>
 
-				<input
-					class="w-full rounded-md border border-gray-300 px-4 py-2"
-					[type]="type"
-					[id]="name"
-					[name]="name"
-					[placeholder]="placeholder"
-					[formControlName]="name"
-				/></div
-		></ng-container>
+				<div>
+					<input
+						class="w-full rounded-md border border-gray-300 px-4 py-2"
+						[type]="type"
+						[id]="name"
+						[name]="name"
+						[placeholder]="placeholder"
+						[formControlName]="name"
+					/>
+
+					@if (error) {
+						<p class="absolute text-sm text-red-500">{{ error }}</p>
+					}
+				</div>
+			</div></ng-container
+		>
 	`,
 })
 export class TextareaComponent {
@@ -33,6 +40,7 @@ export class TextareaComponent {
 	@Input() type = "text";
 	@Input() className = "";
 	@Input() form!: FormGroup;
+	@Input() error?: string;
 
 	get containerClass() {
 		return cn("", {}, this.className);

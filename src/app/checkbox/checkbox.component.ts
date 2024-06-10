@@ -17,7 +17,13 @@ import { cn } from "@/lib/ui";
 					[name]="name"
 					[formControlName]="name"
 				/>
-				<label class="text-sm" [for]="name">{{ label }}</label>
+				<div>
+					<label class="text-sm" [for]="name">{{ label }}</label>
+
+					@if (error) {
+						<p class="absolute text-sm text-red-500">{{ error }}</p>
+					}
+				</div>
 			</div></ng-container
 		>
 	`,
@@ -27,6 +33,7 @@ export class CheckboxComponent {
 	@Input({ required: true }) label = "";
 	@Input() className = "";
 	@Input() form!: FormGroup;
+	@Input() error?: string;
 
 	get containerClass() {
 		return cn("space-x-4 flex items-center", this.className);
