@@ -16,7 +16,7 @@ import { cn } from "@/lib/ui";
 				<div class="inline-block h-0.5 w-8 bg-black"></div>
 			</button>
 
-			<div [className]="backgroundClass">&nbsp;</div>
+			<div [className]="backgroundClass"></div>
 
 			<nav [className]="navClass">
 				<button
@@ -60,18 +60,18 @@ export class MobileNavigationComponent {
 
 	get backgroundClass() {
 		return cn(
-			"size-4 z-10 bg-gradient-to-r pointer-events-none from-primary to-green-200 rounded-full fixed -top-4 -right-4 transition-all duration-700",
+			"size-4 z-10 bg-gradient-to-r min-w-0 min-h-0 pointer-events-none from-primary to-green-200 rounded-[50%] rounded-tr-none fixed -top-4 -right-4 transition-all duration-700",
 			{
-				"scale-[150]": this.isOpen,
+				"scale-[1.5] min-w-[100vw] min-h-screen": this.isOpen,
 			}
 		);
 	}
 
 	get navClass() {
 		return cn(
-			"z-20 fixed left-0 top-0 h-screen w-0 opacity-0 transition-all flex justify-center items-center duration-700",
+			"z-20 fixed left-0 top-0 h-screen w-0 flex-wrap whitespace-nowrap opacity-0 pointer-events-none transition-all flex justify-center items-center duration-700",
 			{
-				"opacity-100 w-full": this.isOpen,
+				"opacity-100 w-full pointer-events-auto": this.isOpen,
 			}
 		);
 	}
